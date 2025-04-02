@@ -2,7 +2,6 @@ import {
 	defineNuxtModule,
 	createResolver,
 	installModule,
-	addImportsDir,
 	addComponentsDir,
 	addImports,
 } from '@nuxt/kit';
@@ -24,7 +23,7 @@ export default defineNuxtModule<ModuleOptions>({
 	async setup(options, nuxt) {
 		const { resolve } = createResolver(import.meta.url);
 
-		nuxt.options.alias['#deermice'] = resolve('./runtime');
+		nuxt.options.alias['#deermice-ui'] = resolve('./runtime');
 
 		// Modules - Installs tailwind, fonts, icons, etc
 		await installModule('@nuxt/ui');
@@ -51,8 +50,5 @@ export default defineNuxtModule<ModuleOptions>({
 				{ name: 'mapContentBreadcrumbs', from: resolve('./runtime/utils') },
 			]);
 		}
-
-		// Composables
-		addImportsDir(resolve('./runtime/composables'));
 	},
 });

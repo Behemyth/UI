@@ -1,3 +1,7 @@
+import { createResolver } from '@nuxt/kit';
+
+const { resolve } = createResolver(import.meta.url);
+
 export default defineNuxtConfig({
 	modules: ['../src/module'],
 	devtools: {
@@ -10,4 +14,12 @@ export default defineNuxtConfig({
 		compatibilityVersion: 4,
 	},
 	compatibilityDate: '2024-11-12',
+
+	vite: {
+		resolve: {
+			alias: {
+				'@deermice/ui': resolve('../dist/runtime/index.css'),
+			},
+		},
+	},
 });
